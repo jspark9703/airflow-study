@@ -1,0 +1,11 @@
+# 가상 환경 폴더 무시
+venv/
+
+# Python 기본 무시 파일
+*.py[cod]
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
