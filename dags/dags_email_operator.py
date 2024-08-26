@@ -14,7 +14,7 @@ with DAG(
     params={"example_key": "example_value"},
 ) as dag:
     send_email_task = EmailOperator(
-         conn_id="send_email_task",
+         task_id = "send_email_task",
          to="jspark9703@gmail.com",
          subject="airflow  성공메일",
          html_content="airflow 작업완료"
