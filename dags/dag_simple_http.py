@@ -14,7 +14,7 @@ with DAG (
     tb_forgeted_things = SimpleHttpOperator(
         task_id = "tb_forgeted_things",
         http_conn_id = "data_forgeted_thing",
-        endpoint = "{{var.value.api_key_openapi_seoul.go.kr}}/json/lostArticleBizInfo/1/5/",
+        endpoint = "{{var.value.api_key_openapi_seoul_go_kr}}/json/lostArticleBizInfo/1/5/",
         method = "GET",
         headers = {"Content-Type":"application/json",
                    "charset":"utf-8",
