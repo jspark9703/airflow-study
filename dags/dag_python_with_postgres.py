@@ -21,8 +21,8 @@ with DAG(
                 task_id = kwargs.get("ti").task_id
                 run_id = kwargs.get("ti").run_id
                 msg = "insrt 수행"
-                sql = "insert into py_opr_drct_inrt value (%s,%s,%s,%s);"
-                cursor.execute(sql,(dag_id,task_id, run_id,msg))
+                sql = "insert into py_opr_drct_inrt values (%s,%s,%s,%s);"
+                cursor.execute(sql,(dag_id, task_id, run_id,msg))
                 conn.commit()
     insrt_postres = PythonOperator(
         task_id = 'insrt_postgres',
