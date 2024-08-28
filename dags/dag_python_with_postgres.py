@@ -18,8 +18,8 @@ with DAG(
         with closing(psycopg2.connect(host = ip, dbname = dbname,user = user, password = passwd, port= int(port) )) as conn:
             with closing(conn.cursor()) as cursor:
                 dag_id = kwargs.get("ti").dag_id
-                task_id = kwargs.get("ti").dag_id
-                run_id = kwargs.get("ti").dag_id
+                task_id = kwargs.get("ti").task_id
+                run_id = kwargs.get("ti").run_id
                 msg = "insrt 수행"
                 sql = "insert into py_opr_drct_inrt value (%s,%s,%s,%s);"
                 cursor.execute(sql,(dag_id,task_id, run_id,msg))
