@@ -34,7 +34,10 @@ class SeoulApiToCsvOperator(BaseOperator):
                 
             if not os.path.exists(self.path):
                 os.makedirs(self.path, exist_ok=False)
-            total_row_df.to_csv(self.path + "/"+ self.file_name, encoding="utf-8", index=False)
+            try:
+                total_row_df.to_csv(self.path + "/"+ self.file_name, encoding="utf-8", index=False)
+            except:
+                FileNotFoundError()
             
     def _call_api(self, base_url, start_row, end_row):
         import requests
