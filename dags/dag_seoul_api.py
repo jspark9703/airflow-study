@@ -12,15 +12,15 @@ with DAG(
     tb_lost_article_info = SeoulApiToCsvOperator(
         task_id = "tb_lost_article_info",
         dataset_nm="lostArticleBizInfo",
-        path="/opt/airflow/files/TbLostArticleInfo{{data_interval_end.in_timezone('Asia/Seoul') | ds_nodash}}",
-        file_name= "TbLostArticleInfo.csv"
+        path="/opt/airflow/files",
+        file_name= "TbLostArticleInfo{{data_interval_end.in_timezone('Asia/Seoul') | ds_nodash}}.csv"
     )
     """주차장"""
     tb_use_year_status_view = SeoulApiToCsvOperator(
         task_id = "tb_use_year_status_view",
         dataset_nm="TbUseYearstatusView",
-        path="/opt/airflow/files/TbUseYearstatusView{{data_interval_end.in_timezone('Asia/Seoul') | ds_nodash}}",
-        file_name= "TbUseYearstatusView.csv"
+        path="/opt/airflow/files",
+        file_name= "TbUseYearstatusView{{data_interval_end.in_timezone('Asia/Seoul') | ds_nodash}}.csv"
     )
     
     tb_lost_article_info >> tb_use_year_status_view
