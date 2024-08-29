@@ -10,7 +10,7 @@ with DAG(
     catchup=False
 ) as dag :
     
-    def insrt_postgres(postgres_conn_id, **kwargs):
+    def insrt_postgres(postgres_conn_id, tble_nm, file_cm, **kwargs):
         from airflow.providers.postgres.hooks.postgres import PostgresHook
         import psycopg2
         from contextlib import closing 
