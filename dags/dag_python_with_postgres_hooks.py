@@ -15,6 +15,7 @@ with DAG(
         import psycopg2
         from contextlib import closing 
         postgres_hook = PostgresHook(postgres_conn_id)
+        postgres_hook.bulk_load(tble_nm, file_cm)
         with closing(postgres_hook.get_conn()) as conn:
             with closing(conn.cursor()) as cursor:
                 dag_id = kwargs.get("ti").dag_id
@@ -27,7 +28,7 @@ with DAG(
     insrt_postres = PythonOperator(
         task_id = 'insrt_postgres',
         python_callable=insrt_postgres,
-        op_args={"postgres_conn_id":"conn-db-postgres-custom"}
+        op_kwargs= {"postgres_conn": "conn-db-postgres-custom", "tbl_nm":"Tb_bulk1", "file_nm": "/opt/airflow/files/tb_bulk/{{data_interval_end.in_timezone('Asia/Seoul')| ds_nodash}}/tb_bulk.csv"}
     )
     
     insrt_postgres
