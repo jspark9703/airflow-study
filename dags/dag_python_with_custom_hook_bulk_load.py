@@ -23,7 +23,7 @@ with DAG(
     current_date = start_date
     while current_date <= end_date:
         formatted_date = current_date.format('YYYYMMDD')
-        file_path = f'/opt/airflow/files/TbCorona19CountStatus/{formatted_date}/{formatted_date}.csv'
+        file_path = f'/opt/airflow/files/TbCorona19CountStatus/TbCorona19CountStatus.csv'
         
         insrt_postgres_task = PythonOperator(
             task_id=f'insrt_postgres_{formatted_date}',
